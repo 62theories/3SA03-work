@@ -53,8 +53,9 @@ export default class WordCard extends Component {
        		if(this.state.word.match(guess.join('').toString())){
          		this.setState({
            		guess: [],
-           		completed: true
+           		completed: true,
          	  })
+         	this.state.chars = Array.from(this.state.word);
        		}
        		else
        		{
