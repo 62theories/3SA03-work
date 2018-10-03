@@ -10,6 +10,7 @@ const prepareStateFromWord = (given_word) => {
      chars,
      attempt: 1,
      guess: [],
+     oldValue: [],
      completed: false
    }
 }
@@ -21,6 +22,7 @@ export default class WordCard extends Component {
       this.state = {}
     }
 
+
   componentWillMount(){
     let data = prepareStateFromWord(this.props.value);
     this.setState({
@@ -28,29 +30,45 @@ export default class WordCard extends Component {
       chars: data.chars,
       attempt: data.attempt,
       guess: data.guess,
+      oldValue: data.oldValue,
       completed: data.completed,
     })
   }
 
-  activationHandler = (c) => {
+
+  activationHandler = (c,boool) => {
      let guess = [...this.state.guess, c]
 
-     this.setState({
-       guess
-     })
+     if(boool === 1)
+     {
+		this.setState({
+       				  guess
+     				})
 
-     if(guess.length === this.state.chars.length){
-       if(this.state.word.match(guess.join('').toString())){
-         this.setState({
-           guess: [],
-           completed: true
-         })
-       }else{
-         this.setState({
-           guess: [],
-           attempt: this.state.attempt + 1})
-     }
-  }
+     	if(guess.length === this.state.chars.length){
+       		if(this.state.word.match(guess.join('').toString())){
+         		this.setState({
+           		guess: [],
+           		completed: true
+         	  })
+       		}
+       		else
+       		{
+         		this.setState({
+           		guess: [],
+           		attempt: this.state.attempt + 1})
+     		}
+  		}
+
+  		this.state.oldValue = guess;  
+
+
+    }
+    else if(boool === 0)
+    {
+
+    }
+     
 }
 
   render() {
@@ -63,3 +81,4 @@ export default class WordCard extends Component {
       );
     }
 }
+
