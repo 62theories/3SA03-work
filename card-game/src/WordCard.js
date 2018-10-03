@@ -61,10 +61,15 @@ export default class WordCard extends Component {
        		}
        		else
        		{
+       			alert('Wrong! Try again.');
+           		let forRandom = this.state.word+"PETER"
          		this.setState({
            		guess: [],
-           		attempt: this.state.attempt + 1})
-           	alert('Wrong! Try again.');
+           		attempt: this.state.attempt + 1,
+           		chars: _.shuffle(Array.from(forRandom)),
+           		})
+           		
+
      		}
   		}
 
