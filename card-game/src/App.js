@@ -8,7 +8,12 @@ class App extends Component
 	 render() {
  				return (
  						<div>
- 							<WordCard value="BARRY"/>
+ 							<div className = "toTheCenter">
+ 								What is the Flash Name?
+ 								<WordCard value="BARRY"/>
+ 								By Nattawat Songsom
+ 									5935512005
+ 							</div>
  						</div>
  						);
  			  }
