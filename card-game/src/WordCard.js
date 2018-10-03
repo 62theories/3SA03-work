@@ -48,8 +48,14 @@ export default class WordCard extends Component {
        				  guess
      				})
 
-		this.state.temp = this.state.oldValue;
-		this.state.oldValue = this.state.guess;
+		let temp = this.state.oldValue;
+		this.setState({
+       				  temp
+     				}) 
+		let oldValue = this.state.guess;
+		this.setState({
+       				  oldValue
+     				})
      	if(guess.length === 5){
        		if(this.state.word.match(guess.join('').toString())){
          		this.setState({
@@ -80,12 +86,14 @@ export default class WordCard extends Component {
     else if(boool === 0)
     {
 
-    	guess = this.state.oldValue;
+    	let guess = this.state.oldValue;
     			this.setState({
        				  guess
      				})
-    	this.state.oldValue = this.state.temp;
-
+		let oldValue = this.state.temp;
+		this.setState({
+       				  oldValue
+     				})
     }
      
 }
