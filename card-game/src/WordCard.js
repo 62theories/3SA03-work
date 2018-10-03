@@ -4,7 +4,8 @@ import CharacterCard from './CharacterCard';
 
 const prepareStateFromWord = (given_word) => {
    let word = given_word.toUpperCase()
-   let chars = _.shuffle(Array.from(word))
+   let forRandom = word+"PETER"
+   let chars = _.shuffle(Array.from(forRandom))
    return {
      word,
      chars,
