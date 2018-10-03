@@ -11,6 +11,7 @@ const prepareStateFromWord = (given_word) => {
      attempt: 1,
      guess: [],
      oldValue: [],
+     temp: [],
      completed: false
    }
 }
@@ -31,6 +32,7 @@ export default class WordCard extends Component {
       attempt: data.attempt,
       guess: data.guess,
       oldValue: data.oldValue,
+      temp: data.temp,
       completed: data.completed,
     })
   }
@@ -45,6 +47,8 @@ export default class WordCard extends Component {
        				  guess
      				})
 
+		this.state.temp = this.state.oldValue;
+		this.state.oldValue = this.state.guess;
      	if(guess.length === this.state.chars.length){
        		if(this.state.word.match(guess.join('').toString())){
          		this.setState({
@@ -60,12 +64,18 @@ export default class WordCard extends Component {
      		}
   		}
 
-  		this.state.oldValue = guess;  
+  		  
 
 
     }
     else if(boool === 0)
     {
+
+    	guess = this.state.oldValue;
+    			this.setState({
+       				  guess
+     				})
+    	this.state.oldValue = this.state.temp;
 
     }
      
