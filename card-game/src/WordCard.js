@@ -57,12 +57,14 @@ export default class WordCard extends Component {
            		completed: true,
          	  })
          	this.state.chars = Array.from(this.state.word);
+         	alert('Correct!');
        		}
        		else
        		{
          		this.setState({
            		guess: [],
            		attempt: this.state.attempt + 1})
+           	alert('Wrong! Try again.');
      		}
   		}
 
